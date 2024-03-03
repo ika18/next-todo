@@ -8,6 +8,7 @@ export const TodoList = ({ status }: { status: StatusTypes }) => {
   const todos = useTodoStore((state) => state.filteredTodos(status));
   const toggleTodo = useTodoStore((state) => state.toggleTodo);
   const updateTodo = useTodoStore((state) => state.updateTodo);
+  const removeTodo = useTodoStore((state) => state.removeTodo);
 
   return (
     <>
@@ -18,6 +19,7 @@ export const TodoList = ({ status }: { status: StatusTypes }) => {
           completed={todo.completed}
           onToggle={() => toggleTodo(todo.id)}
           onUpdate={(value: string) => updateTodo(todo.id, value)}
+          onDelete={() => removeTodo(todo.id)}
         />
       ))}
     </>
